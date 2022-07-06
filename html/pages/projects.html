@@ -1,8 +1,14 @@
 {% extends 'layout/main.html' %} {% block content %}
 <h1>projects</h1>
-<p>
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque nulla
-  cupiditate optio maiores ad quisquam distinctio dolores, fugit ullam at eum,
-  vero, in iste reiciendis incidunt nam ea fugiat sapiente.
-</p>
+<ul>
+  {%for project in projects %}
+  <li>
+    name:
+    <a href="{% url 'project' project.id %}"> {{project.title}}</a
+    >-{{project.description}}
+  </li>
+  {%endfor%}
+</ul>
+<button type="button" onclick="changeStyle()">Click Me</button>
+
 {% endblock content %}
