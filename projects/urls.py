@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
     path('', views.projectsPage, name='projects'),
-    path('projects/', views.projectsPage, name='projects'),
-    path('project/<str:pk>', views.projectPage, name='project'),
+    path('project/<str:pk>/', views.projectPage, name='project'),
+    path('create-project/', views.createProject, name='create-project'),
+    path('update-project/<str:pk>', views.updateProject, name='update-project'),
+    path('delete-obj/<str:pk>', views.deleteProject, name='delete-obj'),
 ]
