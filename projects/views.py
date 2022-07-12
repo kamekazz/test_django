@@ -6,9 +6,6 @@ from projects.forms import ProjectForm
 from projects.models import Project
 
 
-HOLA = os.getenv("HOLA")
-
-
 def projectsPage(req):
     projectsList = Project.objects.all()
     context = {'projects': projectsList}
