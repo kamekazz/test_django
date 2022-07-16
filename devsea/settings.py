@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'projects.apps.ProjectsConfig',
     'users.apps.UsersConfig',
+    'tel_attack.apps.TelAttackConfig',
 ]
 
 MIDDLEWARE = [
