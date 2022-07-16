@@ -1,6 +1,6 @@
-import os
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
-
+from django.contrib import messages
 from projects.forms import ProjectForm
 
 from projects.models import Project
@@ -19,6 +19,7 @@ def projectPage(req, pk):
     return render(req, 'pages/single_Pro.html', context)
 
 
+@login_required(login_url='login')
 def createProject(req):
     form = ProjectForm()
 
