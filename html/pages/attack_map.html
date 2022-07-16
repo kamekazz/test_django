@@ -1,9 +1,9 @@
 {% extends 'layout/main.html' %} {% block content %}
 
-<h1>attack_map.html</h1>
+<h1>Attack Plan</h1>
 <h2>{{attack.title}}</h2>
 <p>{{attack.text_message}}</p>
-
+<button id="everybodydance"><span>start the attack!</span></button>
 <div class="project__tags">
   {% for tel in attack.telephone.all %}
   <span class="tag tag--pill tag--main">
@@ -11,4 +11,93 @@
   </span>
   {% endfor %}
 </div>
+<style>
+  #everybodydance {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border: none;
+    color: white;
+    font-family: Avenir, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    background: red;
+    text-shadow: 0 3px 1px rgba(122, 17, 8, 0.8);
+    box-shadow: 0 8px 0 rgb(183, 9, 0), 0 15px 20px rgba(0, 0, 0, 0.35);
+    text-transform: uppercase;
+    transition: 0.4s all ease-in;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    margin-bottom: 2.5rem;
+  }
+
+  button span {
+    position: relative;
+    color: white;
+    font-family: Avenir, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+  }
+  .pressed {
+    padding-top: 3px;
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 rgb(183, 0, 0), 0 8px 6px rgba(0, 0, 0, 0.45);
+  }
+</style>
+
+<script>
+  var contextClass =
+    window.AudioContext ||
+    window.webkitAudioContext ||
+    window.mozAudioContext ||
+    window.oAudioContext ||
+    window.msAudioContext;
+  var dance = document.getElementById('everybodydance');
+  if (contextClass) {
+    var context = new contextClass();
+  } else {
+    onError;
+  }
+  var request = new XMLHttpRequest();
+  request.open(
+    'GET',
+    'https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/gonna-make-you-sweat.mp3',
+    true
+  );
+  request.responseType = 'arraybuffer';
+  request.onload = function () {
+    context.decodeAudioData(
+      request.response,
+      function (theBuffer) {
+        buffer = theBuffer;
+      },
+      onError
+    );
+  };
+  request.send();
+
+  function onError() {
+    console.log('Bad browser! No Web Audio API for you');
+  }
+
+  function unpress() {
+    dance.classList.remove('pressed');
+  }
+
+  function playSound() {
+    dance.classList.add('pressed');
+    var source = context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(context.destination);
+    source.start(0);
+    var delay = 2000;
+    setTimeout(unpress, delay);
+  }
+  dance.addEventListener('click', function (event) {
+    playSound();
+  });
+</script>
 {% endblock content %}
