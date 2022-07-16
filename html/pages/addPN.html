@@ -1,6 +1,7 @@
 {% extends 'layout/main.html' %} {% block content %}
 
 <h1>Phone Numbers</h1>
+<a href="{%url 'attacks'%}">Go Back</a>
 <form class="form" method="POST">
   {% csrf_token %} {% for field in form %}
   <!-- Input:Text -->

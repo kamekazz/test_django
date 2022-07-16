@@ -15,6 +15,20 @@ def attacksPage(req):
 
 
 @login_required(login_url='login')
+def attackMapPage(req, pk):
+    attack = Attack.objects.get(id=pk)
+    context = {'attack': attack}
+    return render(req, 'pages/attack_map.html', context)
+
+
+@login_required(login_url='login')
+def updateAttackPage(req, pk):
+    attack = Attack.objects.get(id=pk)
+    context = {'attack': attack}
+    return render(req, 'pages/attack.html', context)
+
+
+@login_required(login_url='login')
 def addPNPage(req):
     form = TelephoneForm()
     if req.method == "POST":

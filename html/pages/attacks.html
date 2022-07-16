@@ -3,5 +3,11 @@
 <h1>attacks.html</h1>
 <a href="{%url 'addPN'%}">add Phone Numbers</a>
 {% for attack in attacks %}
-<p>{{attack.title}}</p>
+<ul>
+  <li>
+    <a href="{% url 'attack-map' attack.id %}">
+      <p>{{attack.title}}</p>
+    </a>
+  </li>
+</ul>
 {% endfor%} {% endblock content %}

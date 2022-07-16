@@ -1,0 +1,14 @@
+{% extends 'layout/main.html' %} {% block content %}
+
+<h1>attack_map.html</h1>
+<h2>{{attack.title}}</h2>
+<p>{{attack.text_message}}</p>
+
+<div class="project__tags">
+  {% for tel in attack.telephone.all %}
+  <span class="tag tag--pill tag--main">
+    <small>{{tel}}</small>
+  </span>
+  {% endfor %}
+</div>
+{% endblock content %}
