@@ -24,7 +24,7 @@ class Attack(models.Model):
 
 class TelephoneNumber(models.Model):
     name = models.CharField(max_length=200)
-    target_number = models.CharField(max_length=9)
+    target_number = models.CharField(max_length=10)
     created = models.DateField(auto_now_add=True)
     id = models.UUIDField(
         default=uuid.uuid4, unique=True,
