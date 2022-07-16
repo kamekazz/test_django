@@ -11,6 +11,7 @@ class Attack(models.Model):
         Profile, null=True, blank=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=200)
     telephone = models.ManyToManyField('TelephoneNumber', blank=True)
+    text_message = models.TextField(max_length=200, default='hi',)
     created = models.DateField(auto_now_add=True)
     id = models.UUIDField(
         default=uuid.uuid4, unique=True,

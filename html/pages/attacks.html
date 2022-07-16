@@ -1,4 +1,6 @@
 {% extends 'layout/main.html' %} {% block content %}
 
 <h1>attacks.html</h1>
-{% endblock content %}
+{% for attack in attacks %}
+<p>{{attack.title}}</p>
+{% endfor%} {% endblock content %}
