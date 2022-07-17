@@ -1,0 +1,1 @@
+web: gunicorn devsea.wsgi --log-file -

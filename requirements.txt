@@ -1,0 +1,33 @@
+asgiref @ file:///home/conda/feedstock_root/build_artifacts/asgiref_1652752042988/work
+autopep8 @ file:///opt/conda/conda-bld/autopep8_1650463822033/work
+brotlipy==0.7.0
+certifi==2022.6.15
+cffi @ file:///C:/ci_310/cffi_1642682485096/work
+charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
+click @ file:///D:/bld/click_1651215430313/work
+colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1655412516417/work
+cryptography @ file:///C:/ci/cryptography_1652083563162/work
+Django @ file:///tmp/build/80754af9/django_1625585912945/work
+django-cors-headers @ file:///home/conda/feedstock_root/build_artifacts/django-cors-headers_1654546143857/work
+djangorestframework @ file:///home/conda/feedstock_root/build_artifacts/djangorestframework_1639677796037/work
+gunicorn==20.1.0
+idna @ file:///tmp/build/80754af9/idna_1637925883363/work
+Pillow==9.0.1
+psycopg2 @ file:///C:/ci/psycopg2_1612298766762/work
+pycodestyle @ file:///tmp/build/80754af9/pycodestyle_1636635402688/work
+pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
+PyJWT @ file:///home/conda/feedstock_root/build_artifacts/pyjwt_1652398519695/work
+pyOpenSSL @ file:///opt/conda/conda-bld/pyopenssl_1643788558760/work
+PySocks @ file:///C:/ci/pysocks_1605307512533/work
+python-dotenv @ file:///home/conda/feedstock_root/build_artifacts/python-dotenv_1648162816482/work
+pytz @ file:///home/conda/feedstock_root/build_artifacts/pytz_1647961439546/work
+requests @ file:///C:/ci/requests_1656443901233/work
+sqlparse @ file:///home/conda/feedstock_root/build_artifacts/sqlparse_1631317292236/work
+toml @ file:///tmp/build/80754af9/toml_1616166611790/work
+twilio @ file:///home/conda/feedstock_root/build_artifacts/twilio_1656545851024/work
+typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1650370875435/work
+tzdata @ file:///home/conda/feedstock_root/build_artifacts/python-tzdata_1647621564023/work
+urllib3 @ file:///C:/ci/urllib3_1650639883891/work
+whitenoise @ file:///home/conda/feedstock_root/build_artifacts/whitenoise_1654461900330/work
+win-inet-pton @ file:///C:/ci/win_inet_pton_1605306162074/work
+wincertstore==0.2
