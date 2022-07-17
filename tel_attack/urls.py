@@ -5,5 +5,6 @@ urlpatterns = [
     path('attacks/', views.attacksPage, name='attacks'),
     path('add-tel/', views.addPNPage, name='addPN'),
     path('attack-map/<str:pk>', views.attackMapPage, name='attack-map'),
+    path('start-attack/<str:pk>', views.startAttack, name='start-attack'),
 
 ]

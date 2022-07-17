@@ -38,3 +38,8 @@ def addPNPage(req):
     telephonesList = TelephoneNumber.objects.all()
     context = {'telephones': telephonesList, 'form': form}
     return render(req, 'pages/addPN.html', context)
+
+
+def startAttack(req, pk):
+    print(pk)
+    return render(req, 'pages/addPN.html')

@@ -1,17 +1,36 @@
-{% extends 'layout/main.html' %} {% block content %}
-
-<h1>Attack Plan</h1>
-<h2>{{attack.title}}</h2>
-<p>{{attack.text_message}}</p>
-<button id="everybodydance"><span>start the attack!</span></button>
-<div class="project__tags">
-  {% for tel in attack.telephone.all %}
-  <span class="tag tag--pill tag--main">
-    <small>{{tel}}</small>
-  </span>
-  {% endfor %}
+{% extends 'layout/main.html' %} {% block content %} {% load static %}
+<div class="auth">
+  <div class="card">
+    <div class="auth__header text-center">
+      <a href="/">
+        <img src="{% static 'images/icon.svg' %}" alt="icon" />
+      </a>
+      <h3>Attack Plan</h3>
+      <h4>{{attack.title}}</h4>
+      <p>{{attack.text_message}}</p>
+    </div>
+    <div class="attack_red_container">
+      <button id="everybodydance"><span>start the attack!</span></button>
+    </div>
+    <div class="project__tags">
+      {% for tel in attack.telephone.all %}
+      <span class="tag tag--pill tag--main">
+        <small>{{tel}}</small>
+      </span>
+      {% endfor %}
+    </div>
+  </div>
 </div>
+
 <style>
+  .attack_red_container {
+    margin-bottom: 2.5rem;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   #everybodydance {
     border-radius: 50%;
     width: 200px;
@@ -29,7 +48,7 @@
     outline: none;
     cursor: pointer;
     text-align: center;
-    -webkit-user-select: none;
+    /* -webkit-user-select: none; */
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     margin-bottom: 2.5rem;
   }
@@ -49,55 +68,30 @@
 </style>
 
 <script>
-  var contextClass =
-    window.AudioContext ||
-    window.webkitAudioContext ||
-    window.mozAudioContext ||
-    window.oAudioContext ||
-    window.msAudioContext;
-  var dance = document.getElementById('everybodydance');
-  if (contextClass) {
-    var context = new contextClass();
-  } else {
-    onError;
-  }
-  var request = new XMLHttpRequest();
-  request.open(
-    'GET',
-    'https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/gonna-make-you-sweat.mp3',
-    true
-  );
-  request.responseType = 'arraybuffer';
-  request.onload = function () {
-    context.decodeAudioData(
-      request.response,
-      function (theBuffer) {
-        buffer = theBuffer;
-      },
-      onError
-    );
+  const Http = new XMLHttpRequest();
+  const url = 'http://127.0.0.1:8000/tel/start-attack/{{attack.id}}';
+  Http.open('GET', url);
+  Http.send();
+
+  Http.onreadystatechange = (e) => {
+    console.log(Http.responseText);
   };
-  request.send();
 
-  function onError() {
-    console.log('Bad browser! No Web Audio API for you');
-  }
+  // decoration
+  var dance = document.getElementById('everybodydance');
 
-  function unpress() {
+  function handel_un_press() {
     dance.classList.remove('pressed');
   }
 
-  function playSound() {
+  function handel_press() {
     dance.classList.add('pressed');
-    var source = context.createBufferSource();
-    source.buffer = buffer;
-    source.connect(context.destination);
-    source.start(0);
-    var delay = 2000;
-    setTimeout(unpress, delay);
+
+    var delay = 1000;
+    setTimeout(handel_un_press, delay);
   }
   dance.addEventListener('click', function (event) {
-    playSound();
+    handel_press();
   });
 </script>
 {% endblock content %}
